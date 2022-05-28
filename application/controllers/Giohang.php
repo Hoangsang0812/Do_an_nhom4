@@ -16,6 +16,7 @@ class Giohang extends CI_Controller
         $this->load->model('frontend/Mdistrict');
         $this->load->model('frontend/Mprovince');
         $this->load->model('frontend/Minfocustomer');
+        $this->load->model('backend/Mconfiguration');
         $this->data['com'] = 'giohang';
         $this->data['info'] = $this->Minfocustomer->customer_detail_id($this->session->userdata('id'));
     }
@@ -182,6 +183,7 @@ class Giohang extends CI_Controller
                 $val = $this->session->userdata('info-customer');
             }
             $list = $this->Morder->order_detail_customerid($val['id']);
+            $row2=$this->Mconfiguration->configuration_detail();
             $data = array(
                 'order' => $list,
                 'customer' => $val,
@@ -200,17 +202,16 @@ class Giohang extends CI_Controller
             $config['protocol']    = 'smtp';
             $config['smtp_host']    = 'ssl://smtp.gmail.com';
             $config['smtp_port']    = '465';
-            $config['smtp_timeout'] = '7';
-            $config['smtp_user']    = '9orangestore@gmail.com';
-            $config['smtp_pass']    = 'cqfmfmrtudhcmahw';
-            // mk trên la mat khau dung dung cua gmail, có thể dùng gmail hoac mat khau. Tao mat khau ung dung de bao mat tai khoan
+            $config['smtp_timeout'] = '60';
+            $config['smtp_user']    = $row2['mail_smtp'];
+            $config['smtp_pass']    = $row2['mail_smtp_password'];
             $config['charset']    = 'utf-8';
             $config['newline']    = "\r\n";
             $config['wordwrap'] = TRUE;
             $config['mailtype'] = 'html';
-            $config['validation'] = TRUE;
+            $config['validation'] = TRUE;   
             $this->email->initialize($config);
-            $this->email->from('9orangestore@gmail.com', '9 Orange');
+            $this->email->from('9orangeshopbn@gmail.com', '(9 Orange store)');
             $list = array($val['email']);
             $this->email->to($list);
             $this->email->subject('Hệ thống 9 Orange');

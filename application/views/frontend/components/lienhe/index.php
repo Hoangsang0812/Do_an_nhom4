@@ -1,12 +1,13 @@
 <?php echo form_open( base_url()."lien-he"); ?>
+<?php
+
+    $user = $this->session->userdata('sessionKhachHang');
+?>
 <section>
 	<div class="container">
 		<div class="col-md-7 col-12">
 			<div class="section-article contactpage" style="  padding-left: 20px;">
-				<?php 
-				echo validation_errors();
-				
-				?>
+
 				<form accept-charset="UTF-8" action="<?php echo base_url() ?>lien-he" id="contact" method="post">
 					<input name="FormType" type="hidden" value="contact">
 					<input name="utf8" type="hidden" value="true">
@@ -17,31 +18,36 @@
 							<div class="col-md-4 col-12">
 								<div class="form-group" style="width: 200px;">
 									<label for="name"><em> Họ tên</em><span class="required">*</span></label>
-									<input id="name" name="fullname" type="text" value="" class="form-control">
+									<input id="name" name="fullname" type="text" value="<?php if ($this->session->userdata('sessionKhachHang')) echo $user['fullname'] ?>" class="form-control">
 								</div>
+								<div class="error"><?php echo form_error('fullname') ?></div>
 							</div>
 							<div class="col-md-4 col-12">
 								<div class="form-group" style="width: 200px;">
 									<label for="email"><em> Email</em><span class="required">*</span></label>
-									<input id="email" name="email" class="form-control" type="email" value="">
+									<input id="email" name="email" class="form-control" type="email" value="<?php if ($this->session->userdata('sessionKhachHang')) echo $user['email'] ?>">
 								</div>
+								<div class="error"><?php echo form_error('email') ?></div>
 							</div>
 							<div class="col-md-4 col-12">
 								<div class="form-group" style="width: 200px;">
 									<label for="phone"><em> Số điện thoại</em><span class="required">*</span></label>
-									<input type="number" id="phone" class="form-control" name="phone">
+									<input type="number" id="phone" class="form-control" name="phone" value="<?php if ($this->session->userdata('sessionKhachHang')) echo $user['phone'] ?>">
 
 								</div>
+								<div class="error"><?php echo form_error('phone') ?></div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="message"><em> Tiêu đề</em><span class="required">*</span></label>
-							<textarea id="message" name="title" class="form-control custom-control" rows="2"></textarea>
+							<textarea id="message" name="title" class="form-control custom-control" rows="2" ></textarea>
 						</div>
+						<div class="error"><?php echo form_error('title') ?></div>
 						<div class="form-group">
 							<label for="message"><em> Lời nhắn</em><span class="required">*</span></label>
 							<textarea id="message" name="content" class="form-control custom-control" rows="5"></textarea>
 						</div>
+						<div class="error"><?php echo form_error('content') ?></div>
 						<button type="submit" class="btn-update-order" >Gửi nhận xét</button>
 
 					</div>

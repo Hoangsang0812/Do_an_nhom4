@@ -145,7 +145,7 @@
 				data: {id: id},
 				success: function(data) {
 					document.location.reload(true);
-					alert('Xóa sản phẩm thành công !!');
+	
 				}
 			});
 		}

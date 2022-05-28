@@ -23,6 +23,7 @@ class Lienhe extends CI_Controller {
 		$this->form_validation->set_rules('phone', 'Số điện thoại','required' );
 		$this->form_validation->set_rules('title', 'tiêu đề','required' );
 		$this->form_validation->set_rules('content', 'nội dụng','required' );
+		$this->form_validation->set_message('required','%s phải nhập dữ liệu');
 		if($this->form_validation->run()==TRUE){
 			$mydata=array(
 				'fullname'=>$_POST['fullname'],
