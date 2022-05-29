@@ -92,4 +92,13 @@ class Mproduct extends CI_Model {
             return $this->db->get();
     }
 
+    public function select_list_img($id)
+    {
+        $this->db->select("img");
+        $this->db->where('trash', 0);
+        $this->db->where('id', $id);
+        $query = $this->db->get($this->table);
+        return $query->row_array();   
+    }
+
 }
