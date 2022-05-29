@@ -57,19 +57,23 @@ class Product extends CI_Controller {
       } else {
        // echo "Sorry, there was an error uploading your file.";
       }
-      // if (isset($_FILES["image_list"])) {
-      //   $file=$_FILES["image_list"];
-      //   $file_name=$file["name"];
-      //   foreach ($file_name as $key => $value) {
-      //     move_uploaded_file($file["tmp_name"][$key], 'public/images/products/'.$value);
-      //   }
-      // }
+      $name_list= '';
+      if (isset($_FILES["image_list"])) {
+        $file=$_FILES["image_list"];
+        $file_name=$file["name"];
+        foreach ($file_name as $key => $value) {
+          move_uploaded_file($file["tmp_name"][$key], 'public/images/products/'.$value);
+          $name_list .= $value . '#';
+        }
+      }
+     
 			$mydata= array(
 				'catid'=>$_POST['catid'],
 				'producer'=>$_POST['producer'],
 				'name' =>$_POST['name'], 
 				'alias' =>$string=$this->alias->str_alias($_POST['name']),
         'avatar'=>$_FILES["img"]["name"],
+        'img'=>$name_list,
 				'detail'=>$_POST['detail'], 
 				'sortDesc'=>$_POST['sortDesc'], 
 				'number'=>$_POST['number'],
@@ -83,50 +87,7 @@ class Product extends CI_Controller {
 				'trash'=>1,
 				'status'=>$_POST['status']
 			);
-			$config = array();
-	         //thuc mục chứa file
-			$config['upload_path']   = './public/images/products/';
-	         //Định dạng file được phép tải
-			$config['allowed_types'] = 'jpg|png|gif';
-	         //Dung lượng tối đa
-			$config['max_size']      = '500';
-			$config['encrypt_name'] = TRUE;
-	         //Chiều rộng tối đa
-			$config['max_width']     = '1028';
-	         //Chiều cao tối đa
-			$config['max_height']    = '768';
-	         //load thư viện upload
-	         //bien chua cac ten file upload
-			$name_array = array();
 
-	        //lưu biến môi trường khi thực hiện upload
-			$file  = $_FILES['image_list'];
-			$count = count($file['name']);
-			$img = '';
-			$this->load->library('upload', $config);
-			for($i=0; $i<=$count-1; $i++){
-
-              	$_FILES['userfile']['name']     = $file['name'][$i];  //khai báo tên của file thứ i
-              	$_FILES['userfile']['type']     = $file['type'][$i]; //khai báo kiểu của file thứ i
-              	$_FILES['userfile']['tmp_name'] = $file['tmp_name'][$i]; //khai báo đường dẫn tạm của file thứ i
-          		$_FILES['userfile']['error']    = $file['error'][$i]; //khai báo lỗi của file thứ i
-              	$_FILES['userfile']['size']     = $file['size'][$i]; //khai báo kích cỡ của file thứ i
-	              //load thư viện upload và cấu hình
-	              //thực hiện upload từng file
-              	if($this->upload->do_upload()){
-	                  //nếu upload thành công thì lưu toàn bộ dữ liệu
-              		$data = $this->upload->data();
-	                  //in cấu trúc dữ liệu của các file
-              		$img .= $data['file_name'].'#';
-              	}     
-              }
-	        //Lưu nhóm hình ảnh chi tiết
-              $img = rtrim($img, '#');
-              $mydata['img']= $img;
-              if ( $this->upload->do_upload('img')){
-              	$data = $this->upload->data();
-              	$mydata['avatar']=$data['file_name'];
-              }
               $this->Mproduct->product_insert($mydata);
               $this->session->set_flashdata('success', 'Thêm sản phẩm thành công');
               redirect('admin/product','refresh');

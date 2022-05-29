@@ -14,9 +14,11 @@ $(window).load(function() {
    $img = $row['img'];
    $mang = explode('#', $img);
    foreach ($mang as $value) :?>
+    <?php if ($value!='') : ?>
      <li data-thumb="public/images/products/<?php echo $value; ?>">
-        <div class="thumb-image"> <img src="public/images/products/<?php echo $value; ?>"class="img-responsive"> </div>
+        <div class="thumb-image"> <img src="public/images/products/<?php  echo $value; ?>"class="img-responsive"> </div>
     </li>
+    <?php endif; ?>
 <?php endforeach; ?>
 </ul>
 <div class="clearfix"></div>
