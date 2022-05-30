@@ -74,5 +74,14 @@ class Mcategory extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->result_array();
     }
+    public function category_menu2()
+    {
+        // $this->db->where('parentid', $parentid);
+        $this->db->where('status', 1);
+        $this->db->where('trash', 1);
+        $this->db->order_by('orders asc, updated_at desc');
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
     
 }

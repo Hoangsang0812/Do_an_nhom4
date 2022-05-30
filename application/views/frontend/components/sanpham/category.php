@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <?php 
                             $html_list="";
-                            $html_list.='<select id ="sortControl" class = "form-control input-sm" onchange="sortby(this.value)">';
+                            $html_list.='<select id ="sortControl" class = "form-control input-sm" onchange="sortby(this.value) ">';
                             if($this->session->userdata('sortby-category')){
                                 $data = $this->session->userdata('sortby-category');
                                 $sort = $data[0].'-'.$data[1];
@@ -156,5 +156,6 @@
                      console.log(JSON.stringify(error));
    }
         });
+        location.reload();
     }
 </script>

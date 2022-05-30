@@ -21,7 +21,7 @@
                         <div class="fs-ne2-it clearfix">
                             <div class="fs-ne2-if">
                                 <a class="fs-ne2-img" href="tin-tuc/<?php echo $item['alias']; ?>">
-                                    <img  src="public/images/posts/<?php echo $item['img']; ?>"">
+                                    <img  src="public/images/posts/<?php echo $item['img']; ?>">
                                 </a>
                                 <div class="fs-n2-info">
                                     <h3><a class="fs-ne2-tit" href="tin-tuc/<?php echo $item['alias']; ?>" title=""><?php echo $item['title']; ?></a></h3>
