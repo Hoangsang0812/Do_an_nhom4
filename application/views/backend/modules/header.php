@@ -4,7 +4,6 @@
     </a>
     <nav class="navbar navbar-static-top" style="height: 52px">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
         </a>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav" style="height: 52px;  padding: 1px">

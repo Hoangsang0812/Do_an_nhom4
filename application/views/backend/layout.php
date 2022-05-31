@@ -41,7 +41,7 @@
     <?php $this->load->view('backend/modules/header'); ?>
 
 
-    <!-- ./Vung Header -->
+    <!-- ./Vung menu -->
     <?php $this->load->view('backend/modules/menu'); ?>
     <?php 
     if(isset($com, $view))

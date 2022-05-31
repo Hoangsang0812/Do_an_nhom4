@@ -54,6 +54,11 @@
                 <i class="fa fa-cogs"></i> <span>Giao diện</span>
             </a>
         </li>
+        <li class="treeview">
+             <a href="<?php echo base_url() ?>admin/intro">
+                <i class="fa fa-cogs"></i> <span>Giới thiệu</span>
+            </a>
+        </li>
         <li class="header">CÀI ĐẶT</li>
         <li class="treeview">
             <a href="#">

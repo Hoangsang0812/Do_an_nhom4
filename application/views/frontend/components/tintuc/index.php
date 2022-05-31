@@ -28,7 +28,7 @@
                                     <div class="fs-ne2-txt"><?php echo $item['introtext']; ?></div>
                                     <p class="fs-ne2-bot">
                                         <span class="fs-ne2-user">
-                                            <img class="lazy"src="" style="">
+                                            <img class="lazy"src="" >
                                         </span> 
                                         <span><?php echo $item['created']; ?></span>
                                     </p>
