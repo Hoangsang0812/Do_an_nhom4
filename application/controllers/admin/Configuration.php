@@ -38,7 +38,9 @@ class Configuration extends CI_Controller {
 			$this->Mconfiguration->configuration_update($mydata,$id);
 			$this->session->set_flashdata('success', 'Cập nhật Cấu hình thành công');
 			redirect('admin/configuration/update','refresh');
+			
 		} 
+		
 		$this->data['view']='update';
 		$this->data['title']='Cấu hình';
 		$this->load->view('backend/layout', $this->data);

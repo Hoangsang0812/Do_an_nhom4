@@ -1,7 +1,18 @@
-<div class="container" style="margin-top: 20px;">
-<span>GIỚI THIỆU</span>
-    <div class="sale-title">
-        <span>GIỚI THIỆU</span>
-    
-    </div>
+
+<section>
+	<div class="container">
+				<div class="box" id="view" style="  margin-top: 20px;">
+    <div class="section-article contactpage" style="  padding-left: 20px;">
+
+			<div class="section-article contactpage" style="  padding-left: 20px;">
+
+            <?php echo $intro['intro']?>
+			</div>
+		
+
+	</div>
+	
+	</div>
 </div>
+
+</section>

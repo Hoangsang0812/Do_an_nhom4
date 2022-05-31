@@ -12,11 +12,5 @@ class Mintro extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->row_array();   
 	}
-	public function update_intro($mydata){
-		$this->db->where('id', '1');
-        $this->db->update($this->table, $mydata);
-
-	}
-
 
 }
